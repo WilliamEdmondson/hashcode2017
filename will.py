@@ -1,6 +1,7 @@
 #
 #
 import numpy
+from operator import itemgetter
 
 # Read from test file
 fname = "tests/me_at_the_zoo.txt"
@@ -78,5 +79,12 @@ for i in range(0,numEndpts):
     for j in range(0, len(cacheLats)-1):
         temp = int(databaseLat) - int(cacheLats[j][1])
         cacheLatenciesArr.append([cacheLats[j][0],temp])
+        sorted(cacheLatenciesArr, key=itemgetter(1))
+        cacheLatenciesArr.reverse()
         endptCachesLatencyArr.append(cacheLatenciesArr)
+
+
+
+
+
 print (endptCachesLatencyArr)
